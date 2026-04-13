@@ -6,7 +6,7 @@
 
 $$
 \begin{align}
-& L-L' = nl \; ; \; n\in\mathbb{N} \\
+& L-L' = nl  \quad ; n\in\mathbb{N} \\
 & l = \frac{1}{2f_g} \\
 & L-L' = \frac{1}{2f_1} \\
 & L-L'-l = \frac{1}{2f_2}
