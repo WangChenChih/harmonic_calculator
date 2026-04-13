@@ -63,7 +63,7 @@ from harmonic_calculator import harmonic
 har = harmonic(open_string_pitch="D", open_string_octave=4)
 ```
 
-變數```open_string_pitch```代表空弦音高之音名，而```open_string_octave```則指其位於之八度位置。舉例：中央C的音名為C4，因此其對應的```open_string_pitch```為字串```"C"```，並且```open_string_octave```為整數```4```。
+變數```open_string_pitch```代表空弦音高之音名，而```open_string_octave```則指其位於之八度位置。舉例：中央C的音名為C4，因此其對應的```open_string_pitch```為字串```"C"```，並且```open_string_octave```為整數```4```。至於升降則需要用 ```_sharp``` 與 ```_flat``` 來表示，例如 ♯C 應記為```C_sharp``` ，而 ♭D 應記為 ```D_flat```。
 
 ## 自然泛音
 函數
