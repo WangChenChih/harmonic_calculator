@@ -21,8 +21,8 @@ $$
 
 $$
 \begin{align}
-& \frac{f_g}{f_1} = n in \mathbb{N} \\
-& frac{f_g}{f_2} = n-1 \\
+& \frac{f_g}{f_1} = n \in \mathbb{N} \\
+& \frac{f_g}{f_2} = n-1 \\
 \end{align}
 $$
 
