@@ -28,7 +28,7 @@ $$
 因此，只需要透過迴圈尋找所有可能的一指與第二指按弦處之組合使得上述兩條方程式被滿足，我們就可以找到拉出人工泛音 $f_g$ 的方法。
 
 # 使用說明
-在計算之前請先 import package（建議開一個Jupyter Notebook來執行，抑或直接使用此 repository 中的檔案```harmonic_calculator.ipynb```）
+在計算之前請先 import package（建議開一個Jupyter Notebook來執行，或者直接使用此 repository 中的檔案```harmonic_calculator.ipynb```）
 
 ```
 from harmonic_calculator import harmonic
