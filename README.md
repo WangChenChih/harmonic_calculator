@@ -40,7 +40,7 @@ from harmonic_calculator import harmonic
 har = harmonic(open_string_pitch="D", open_string_octave=4)
 ```
 
-變數```open_string_pitch```代表空弦音高之音名，而```open_string_octave```則指其位於之八度位置。舉例：中央C的音名為C4，因此其對應的```open_string_pitch```為C，並且```open_string_octave```為4。
+變數```open_string_pitch```代表空弦音高之音名，而```open_string_octave```則指其位於之八度位置。舉例：中央C的音名為C4，因此其對應的```open_string_pitch```為字串```"C"```，並且```open_string_octave```為整數```4```。
 
 我們在這裡定義變數名稱：食指 （```forefinger```）按實音，而第二指（```second```）虛按某特定處。
 
