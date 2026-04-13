@@ -119,9 +119,23 @@ class harmonic:
                     
                     # condition 2
                     if if_int(num= f_goal / f_2, tolerance=freq_tolerance) and int_part(f_goal / f_2) == int(deter_int - 1):
-                        print("forefinger: " + pitch_1+str(octave_1+oct) + " , " + "second: " + pitch_2+str(octave_2+oct))
+                        print("forefinger: " + pitch_1+str(octave_1+oct) + " , " + "pinkie: " + pitch_2+str(octave_2+oct))
                     else:
                         continue
+    
+    def calculate_natural_harmonic(self, pitch_name_goal, octave_goal, freq_tolerance = 0.01):
+        """
+        The highest possible frequency of the natural harmonic is an octave higher than the open-string frequency. 
+        The condition is f_goal / f_0 = n
+        """
+        f_goal = self.freq_from_pitch(name=pitch_name_goal, oct=octave_goal)
+
+        for semi_add in range(1,11+1):
+            pitch_0, octave_0 = self.pitch_add(pitch_name=self.open_string_pitch, octave=self.open_string_octave, semitone_add=semi_add, output_is_string=False)
+            f_0 = self.freq_from_pitch(name=pitch_0, oct=octave_0)
+
+            if if_int(num= f_goal / f_0, tolerance=freq_tolerance):
+                print("position: "+ pitch_0+str(octave_0))
                     
 def int_part(num):
     # round off
