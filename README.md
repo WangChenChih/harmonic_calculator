@@ -60,7 +60,7 @@ from harmonic_calculator import harmonic
 並設定空弦
 
 ```
-har = harmonic(open_string_pitch="D", open_string_octave=4)
+har = harmonic(open_string_pitch, open_string_octave)
 ```
 
 變數```open_string_pitch```代表空弦音高之音名，而```open_string_octave```則指其位於之八度位置。舉例：中央C的音名為C4，因此其對應的```open_string_pitch```為字串```"C"```，並且```open_string_octave```為整數```4```。至於升降則需要用 ```_sharp``` 與 ```_flat``` 來表示，例如 ♯C 應記為```"C_sharp"``` ，而 ♭D 應記為 ```"D_flat"```。
@@ -69,7 +69,7 @@ har = harmonic(open_string_pitch="D", open_string_octave=4)
 函數
 
 ```
-calculate_natural_harmonic(pitch_name_goal="C", octave_goal=6)
+calculate_natural_harmonic(pitch_name_goal, octave_goal)
 ```
 
 將輸出虛按弦處音高（```position: ```）。其中```pitch_name_goal```為欲產生之自然泛音之音名，而```octave_goal```為其所在之八度位置。
