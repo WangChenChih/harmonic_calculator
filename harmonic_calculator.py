@@ -1,4 +1,5 @@
 import numpy as np
+import math
 
 class harmonic:
     
@@ -95,7 +96,7 @@ class harmonic:
         We will search the possible combinations of the output pitch name for producing the desired note. However, since the longest possible distance our fingers can reach is at most 6 semitones, we will only search for the combinations in such a range. 
         Moreover, if octave_1 is too high relative to the open string, it will be difficult to find the position of the note in practice, so we will only search octave_1 within 2 octaves by default.
         
-        The requirement for note_1 and note_2 is that f_goal / f_1 = n and f_goal / f_2 = n-1, where n must be an integer.
+        The requirement for note_1 and note_2 is that f_goal / f_1 = n and (f_gf_2) / (f_gf_1 + f_1f_2) = m, where n and m must be an integer, and the two integers n-m and m are required to be coprime.
         However, since the frequency multiplier is not perfectly accurate, we will allow a small tolerance for the frequency multiplier. For example, if n is 2, then f_goal / f_1 should be close to 2, and f_goal / f_2 should be close to 1.5. We will allow a tolerance of 0.01 for both of these ratios.
         """
         f_goal = self.freq_from_pitch(name=pitch_name_goal, oct=octave_goal)
@@ -108,7 +109,7 @@ class harmonic:
                 
                 # condition 1
                 if if_int(num= f_goal / f_1, tolerance=freq_tolerance):
-                    deter_int = int_part(f_goal / f_1)
+                    deter_int_1 = int_part(f_goal / f_1)  # the integer n
                 else:
                     continue
                 
@@ -118,8 +119,10 @@ class harmonic:
                     f_2 = self.freq_from_pitch(name=pitch_2, oct=octave_2)
                     
                     # condition 2
-                    if if_int(num= f_goal / f_2, tolerance=freq_tolerance) and int_part(f_goal / f_2) == int(deter_int - 1):
-                        print("forefinger: " + pitch_1+str(octave_1+oct) + " , " + "pinkie: " + pitch_2+str(octave_2+oct))
+                    if if_int(num= (f_goal * f_2) / (f_goal * f_1 + f_1 * f_2), tolerance=freq_tolerance):
+                        deter_int_2 = int_part((f_goal * f_2) / (f_goal * f_1 + f_1 * f_2))  # the integer m
+                        if coprime_check(deter_int_2, deter_int_1-deter_int_2): # require m and n-m to be coprime
+                            print("forefinger: " + pitch_1+str(octave_1+oct) + " , " + "pinkie: " + pitch_2+str(octave_2+oct))
                     else:
                         continue
     
@@ -149,3 +152,18 @@ def if_int(num, tolerance):
         return False
     else:
         return True
+
+def coprime_check(n1, n2):
+    return math.gcd(n1, n1) == 1
+
+def int_form_check(num, func=lambda x: (x-1)/x, up_to=10, tolerance=1e-5):
+    """
+    To see if we can find an integer n such that the input number num is equal to func(n)
+    """
+    check = False
+    for n in range(1,up_to+1):
+        if np.abs(num - func(n)) < tolerance:
+            check = True
+    return check
+
+
